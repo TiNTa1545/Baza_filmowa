@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Director(models.Model):
+    """Model reżysera"""
     first_name = models.CharField(max_length=64, verbose_name='First name')
     last_name = models.CharField(max_length=64, verbose_name='Last name')
     year_of_birth = models.DateField(null=True, verbose_name='Date of birth')
@@ -15,6 +16,7 @@ class Director(models.Model):
 
 
 class Screenwriter(models.Model):
+    """Model autora scenariusza"""
     first_name = models.CharField(max_length=64, verbose_name='First name')
     last_name = models.CharField(max_length=64, verbose_name='Last name')
     year_of_birth = models.DateField(null=True, verbose_name='Date of birth')
@@ -28,6 +30,7 @@ class Screenwriter(models.Model):
 
 
 class Actor(models.Model):
+    """Model aktora"""
     first_name = models.CharField(max_length=64, verbose_name='First name')
     last_name = models.CharField(max_length=64, verbose_name='Last name')
     year_of_birth = models.DateField(null=True, verbose_name='Date of birth')
@@ -41,6 +44,7 @@ class Actor(models.Model):
 
 
 class Music(models.Model):
+    """Model autora muzyki"""
     first_name = models.CharField(max_length=64, verbose_name='First name')
     last_name = models.CharField(max_length=64, verbose_name='Last name')
     year_of_birth = models.DateField(null=True, verbose_name='Date of birth')
@@ -54,6 +58,7 @@ class Music(models.Model):
 
 
 class Movie(models.Model):
+    """Model filmu"""
     title = models.CharField(max_length=128, verbose_name='Title')
     year = models.DateField(null=False, verbose_name='World premiere date')
     director = models.ForeignKey(Director, null=True, on_delete=models.SET_NULL, verbose_name='Director')

@@ -3,7 +3,7 @@
         <ul>
             {% if user.is_superuser %}
                 {% for actor in actors %}
-                    <li><a href="/admin_actor_edit/{{ actor.id }}">{{ actor.first_name }} {{ actor.last_name }}</a></li>
+                    <li><a href="/admin_actor_edit/{{ actor.id }}">{{ actor.first_name }} {{ actor.last_name }}</a> // <a href="/delete_actor/{{ actor.id }}">Delete</a></li>
                 {% endfor %}
             {% else %}
                 {% for actor in actors %}

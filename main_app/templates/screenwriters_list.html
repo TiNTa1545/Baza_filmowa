@@ -3,7 +3,7 @@
         <ul>
             {% if user.is_superuser %}
                 {% for screenwriter in screenwriters %}
-                    <li><a href="/admin_screenwriter_edit/{{ screenwriter.id }}">{{ screenwriter.first_name }} {{ screenwriter.last_name }}</a></li>
+                    <li><a href="/admin_screenwriter_edit/{{ screenwriter.id }}">{{ screenwriter.first_name }} {{ screenwriter.last_name }}</a> // <a href="/delete_screenwriter/{{ screenwriter.id }}">Delete</a></li>
                 {% endfor %}
             {% else %}
                 {% for screenwriter in screenwriters %}

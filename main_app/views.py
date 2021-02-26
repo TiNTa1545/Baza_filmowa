@@ -26,6 +26,7 @@ def admin_panel(request):
 
 
 def django_admin_users(request):
+    """Wyświetla panel django-admin"""
     return redirect(request, 'django-admin-user')
 
 
@@ -129,6 +130,7 @@ class AdminUserEditView(LoginRequiredMixin, View):
 
 
 class AddMovieView(PermissionRequiredMixin, LoginRequiredMixin, View):
+    """Pozwala użytkownikom z odpowiednimi uprawnieniami dodać film do bazy"""
     permission_required = 'main_app.add_movie'
 
     def get(self, request):
@@ -166,7 +168,7 @@ class MovieDetailView(LoginRequiredMixin, View):
 
 class UpdateMovieView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     """Pozwala na wprowadzanie zmian w filmach"""
-    permission_required = 'main_app.can_change_movie'
+    permission_required = 'main_app.change_movie'
     model = Movie
     fields = "__all__"
     template_name = "movie_details.html"
@@ -175,10 +177,10 @@ class UpdateMovieView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
 
 class DeleteMovieView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     """Usuwa film"""
-    permission_required = 'main_app.can_delete_movie'
+    permission_required = 'main_app.delete_movie'
     model = Movie
     template_name = "delete.html"
-    success_url = '/movies/'
+    success_url = '/movies_list/'
 
 
 class AdminMovieEditView(LoginRequiredMixin, View):
@@ -199,7 +201,8 @@ class AdminMovieEditView(LoginRequiredMixin, View):
 
 
 class AddActorView(PermissionRequiredMixin, LoginRequiredMixin, View):
-    permission_required = 'main_app.can_add_actor'
+    """Pozwala użytkownikom z odpowiednimi uprawnieniami dodać aktora do bazy"""
+    permission_required = 'main_app.add_actor'
     def get(self, request):
         form = AddActorForm()
         return render(request, 'add_actor.html', {'form': form})
@@ -231,7 +234,7 @@ class ActorDetailView(LoginRequiredMixin, View):
 
 class UpdateActorView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     """Pozwala na wprowadzanie zmian w aktorach"""
-    permission_required = 'main_app.can_change_actor'
+    permission_required = 'main_app.change_actor'
     model = Actor
     fields = "__all__"
     template_name = "actor_details.html"
@@ -240,10 +243,10 @@ class UpdateActorView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
 
 class DeleteActorView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     """Usuwa aktora"""
-    permission_required = 'main_app.can_delete_actor'
+    permission_required = 'main_app.delete_actor'
     model = Actor
     template_name = "delete.html"
-    success_url = '/actors/'
+    success_url = '/actors_list/'
 
 
 class AdminActorEditView(LoginRequiredMixin, View):
@@ -264,6 +267,7 @@ class AdminActorEditView(LoginRequiredMixin, View):
 
 
 class AddDirectorView(PermissionRequiredMixin, LoginRequiredMixin, View):
+    """Pozwala użytkownikom z odpowiednimi uprawnieniami dodać reżysera do bazy"""
     permission_required = 'main_app.add_director'
     def get(self, request):
         form = AddDirectorForm()
@@ -296,7 +300,7 @@ class DirectorDetailView(LoginRequiredMixin, View):
 
 class UpdateDirectorView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     """Pozwala na wprowadzanie zmian w reżyserach"""
-    permission_required = 'main_app.can_change_director'
+    permission_required = 'main_app.change_director'
     model = Director
     fields = "__all__"
     template_name = "director_details.html"
@@ -305,10 +309,10 @@ class UpdateDirectorView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView
 
 class DeleteDirectorView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     """Usuwa reżysera"""
-    permission_required = 'main_app.can_delete_director'
+    permission_required = 'main_app.delete_director'
     model = Director
     template_name = "delete.html"
-    success_url = '/directors/'
+    success_url = '/directors_list/'
 
 
 class AdminDirectorEditView(LoginRequiredMixin, View):
@@ -329,7 +333,8 @@ class AdminDirectorEditView(LoginRequiredMixin, View):
 
 
 class AddMusicView(PermissionRequiredMixin, LoginRequiredMixin, View):
-    permission_required = 'main_app.can_add_music'
+    """Pozwala użytkownikom z odpowiednimi uprawnieniami dodać autora muzyki do bazy"""
+    permission_required = 'main_app.add_music'
     def get(self, request):
         form = AddMusicForm()
         return render(request, 'add_music.html', {'form': form})
@@ -361,7 +366,7 @@ class MusicDetailView(LoginRequiredMixin, View):
 
 class UpdateMusicView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     """Pozwala na wprowadzanie zmian w autorach muzyki"""
-    permission_required = 'main_app.can_change_music'
+    permission_required = 'main_app.change_music'
     model = Music
     fields = "__all__"
     template_name = "music_details.html"
@@ -370,10 +375,10 @@ class UpdateMusicView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
 
 class DeleteMusicView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     """Usuwa autora muzyki"""
-    permission_required = 'main_app.can_delete_music'
+    permission_required = 'main_app.delete_music'
     model = Music
     template_name = "delete.html"
-    success_url = '/music/'
+    success_url = '/music_list/'
 
 
 class AdminMusicEditView(LoginRequiredMixin, View):
@@ -394,7 +399,8 @@ class AdminMusicEditView(LoginRequiredMixin, View):
 
 
 class AddScreenwriterView(PermissionRequiredMixin, LoginRequiredMixin, View):
-    permission_required = 'main_app.can_add_screenwriter'
+    """Pozwala użytkownikom z odpowiednimi uprawnieniami dodać autora scenariusza do bazy"""
+    permission_required = 'main_app.add_screenwriter'
     def get(self, request):
         form = AddScreenwriterForm()
         return render(request, 'add_screenwriter.html', {'form': form})
@@ -426,7 +432,7 @@ class ScreenwriterDetailView(LoginRequiredMixin, View):
 
 class UpdateScreenwriterView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     """Pozwala na wprowadzanie zmian w autorach scenariusza"""
-    permission_required = 'main_app.can_change_screenwriter'
+    permission_required = 'main_app.change_screenwriter'
     model = Screenwriter
     fields = "__all__"
     template_name = "screenwriter_details.html"
@@ -435,10 +441,10 @@ class UpdateScreenwriterView(PermissionRequiredMixin, LoginRequiredMixin, Update
 
 class DeleteScreenwriterView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     """Usuwa autora scenariusza"""
-    permission_required = 'main_app.can_delete_screenwriter'
+    permission_required = 'main_app.delete_screenwriter'
     model = Screenwriter
     template_name = "delete.html"
-    success_url = '/screenwriter/'
+    success_url = '/screenwriter_list/'
 
 
 class AdminScreenwriterEditView(LoginRequiredMixin, View):

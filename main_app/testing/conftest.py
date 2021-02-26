@@ -13,7 +13,7 @@ def unauthorized_user():
 @pytest.fixture
 def authorized_user():
     authorized_user = User.objects.create_user(username='Piotr')
-    perm = Permission.objects.filter(codename__in=('add_movie', 'add_director'))
+    perm = Permission.objects.filter(codename__in=('add_movie', 'add_director', 'add_actor', 'add_music', 'add_screenwriter'))
     authorized_user.user_permissions.set(perm)
     return authorized_user
 
