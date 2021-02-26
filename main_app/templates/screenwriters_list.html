@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            {% if user.is_superuser %}
+                {% for screenwriter in screenwriters %}
+                    <li><a href="/admin_screenwriter_edit/{{ screenwriter.id }}">{{ screenwriter.first_name }} {{ screenwriter.last_name }}</a></li>
+                {% endfor %}
+            {% else %}
+                {% for screenwriter in screenwriters %}
+                    <li><a href="/screenwriter_detail/{{ screenwriter.id }}">{{ screenwriter.first_name }} {{ screenwriter.last_name }}</a></li>
+                {% endfor %}
+            {% endif %}
+            <a href="{% url 'index' %}">Back to main page</a>
+        </ul>
+    {% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            {% if user.is_superuser %}
+                {% for director in directors %}
+                    <li><a href="/admin_director_edit/{{ director.id }}">{{ director.first_name }} {{ director.last_name }}</a></li>
+                {% endfor %}
+            {% else %}
+                {% for director in directors %}
+                    <li><a href="/director_detail/{{ director.id }}">{{ director.first_name }} {{ director.last_name }}</a></li>
+                {% endfor %}
+            {% endif %}
+            <a href="{% url 'index' %}">Back to main page</a>
+        </ul>
+    {% endblock %}

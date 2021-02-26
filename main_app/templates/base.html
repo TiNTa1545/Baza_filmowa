@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+        <meta charset="UTF-8">
+        <title>MovieWeb</title>
+    </head>
+    <body>
+        <h1 style="text-align: center">MovieWeb</h1>
+        <h1 style="text-align: center">All Movies - One Place</h1>
+            <ul>
+                {% block primary %}
+                    {% if user.is_authenticated %}
+                        Welcome, You're logged as {{ user }}<br><br>
+                        {% if user.is_superuser %}
+                            <a href="{% url 'admin-panel' %}">Admin Panel</a><br><br>
+                        {% endif %}
+                        <a href="{% url 'my-profile' %}">My Account</a><br><br>
+                        <a href="{% url 'users-list' %}">Users List</a><br><br>
+                        <a href="{% url 'add-movie' %}">Add Movie</a><br><br>
+                        <a href="{% url 'movies-list' %}">Movies List</a><br><br>
+                        <a href="{% url 'add-actor' %}">Add Actor</a><br><br>
+                        <a href="{% url 'actors-list' %}">Actors List</a><br><br>
+                        <a href="{% url 'add-director' %}">Add Director</a><br><br>
+                        <a href="{% url 'directors-list' %}">Directors List</a><br><br>
+                        <a href="{% url 'add-music' %}">Add Music</a><br><br>
+                        <a href="{% url 'musics-list' %}">Musics List</a><br><br>
+                        <a href="{% url 'add-screenwriter' %}">Add Screenwriter</a><br><br>
+                        <a href="{% url 'screenwriters-list' %}">Screenwriters List</a><br><br>
+                        <a href="{% url 'logout' %}">Logout</a><br><br>
+                    {% else %}
+                        <a href="{% url 'login' %}">Login</a><br>
+                        <a href="{% url 'add-user' %}">Create New Account</a><br>
+                    {% endif %}
+                {% endblock %}
+                {% block contact %}
+                    <br><h5 style="text-align: center">If You need help, please contact us on: help@movieweb.com</h5>
+                {% endblock %}
+            </ul>
+        <footer style="text-align: right">Website made by: NoName</footer>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            <li>First name: {{ actors.first_name }}</li>
+            <li>Last name: {{ actors.last_name }}</li>
+            <li>Year of birth: {{ actors.year_of_birth }}</li>
+            <a href="{% url 'actors-list' %}">Back to actors list</a>
+        </ul>
+    {% endblock %}

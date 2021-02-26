@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+        </form>
+        <li><a href="{% url 'index' %}">Back to main page</a></li>
+    {% endblock %}

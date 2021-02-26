@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            {% if user.is_superuser %}
+                {% for actor in actors %}
+                    <li><a href="/admin_actor_edit/{{ actor.id }}">{{ actor.first_name }} {{ actor.last_name }}</a></li>
+                {% endfor %}
+            {% else %}
+                {% for actor in actors %}
+                    <li><a href="/actor_detail/{{ actor.id }}">{{ actor.first_name }} {{ actor.last_name }}</a></li>
+                {% endfor %}
+            {% endif %}
+            <a href="{% url 'index' %}">Back to main page</a>
+        </ul>
+    {% endblock %}

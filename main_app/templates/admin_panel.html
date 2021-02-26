@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            <li><a href="{% url 'django-admin-user' %}">Users List</a></li>
+            <li><a href="{% url 'movies-list' %}">Movies List</a></li>
+            <li><a href="{% url 'actors-list' %}">Actors List</a></li>
+            <li><a href="{% url 'directors-list' %}">Directors List</a></li>
+            <li><a href="{% url 'musics-list' %}">Musics List</a></li>
+            <li><a href="{% url 'screenwriters-list' %}">Screenwriters List</a></li>
+            <li><a href="{% url 'index' %}">Back to main page</a></li>
+        </ul>
+    {% endblock %}

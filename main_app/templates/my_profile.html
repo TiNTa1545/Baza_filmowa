@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            <li><a href="{% url 'change-password' %}">Change Password</a></li>
+            <li><a href="{% url 'index' %}">Back to main page</a></li>
+        </ul>
+    {% endblock %}

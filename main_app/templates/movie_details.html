@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            <li>Name: {{ movies.name }}</li>
+            <li>Year: {{ movies.year }}</li>
+            <li>Director: {{ movies.director }}</li>
+            <li>Screenwriter: {{ movies.screenwriter }}</li>
+            <li>Music: {{ movies.music }}</li>
+            {% for actor in movies.actors.all %}
+                <li>Actors: {{ actor.first_name }} {{ actor.last_name }}</li>
+            {% endfor %}
+            <a href="{% url 'movies-list' %}">Back to movies list</a>
+        </ul>
+    {% endblock %}

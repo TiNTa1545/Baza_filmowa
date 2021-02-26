@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            <a href="{% url 'add-movie' %}">Add Movie</a><br><br>
+            {% if user.is_superuser %}
+                {% for movie in movies %}
+                    <li><a href="/admin_movie_edit/{{ movie.id }}">{{ movie.name }}</a></li>
+                {% endfor %}
+            {% else %}
+                {% for movie in movies %}
+                    <li><a href="/movie_detail/{{ movie.id }}">{{ movie.name }}</a></li>
+                {% endfor %}
+            {% endif %}
+            <a href="{% url 'index' %}">Back to main page</a>
+        </ul>
+    {% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            {% if user.is_superuser %}
+                {% for music in musics %}
+                    <li><a href="/admin_music_edit/{{ music.id }}">{{ music.first_name }} {{ music.last_name }}</a></li>
+                {% endfor %}
+            {% else %}
+                {% for music in musics %}
+                    <li><a href="/music_detail/{{ music.id }}">{{ music.first_name }} {{ music.last_name }}</a></li>
+                {% endfor %}
+            {% endif %}
+            <a href="{% url 'index' %}">Back to main page</a>
+        </ul>
+    {% endblock %}

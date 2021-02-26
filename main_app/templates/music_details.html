@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+    {% block primary %}
+        <ul>
+            <li>First name: {{ musics.first_name }}</li>
+            <li>Last name: {{ musics.last_name }}</li>
+            <li>Year of birth: {{ musics.year_of_birth }}</li>
+            <a href="{% url 'musics-list' %}">Back to musics list</a>
+        </ul>
+    {% endblock %}
